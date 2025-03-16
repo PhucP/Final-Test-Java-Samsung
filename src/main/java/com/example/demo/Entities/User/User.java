@@ -1,4 +1,6 @@
-package com.example.demo.Entities;
+package com.example.demo.Entities.User;
+
+import com.example.demo.Entities.Order.Order;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -8,8 +10,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
     @Id
@@ -27,4 +35,6 @@ public class User {
     
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Order order;
+
+    private String role;
 }
